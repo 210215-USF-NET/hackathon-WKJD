@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VCVModels
 {
-    class User
+    public class User
     {
         [Key]
         public int UserID { get; set; }
