@@ -22,6 +22,11 @@ namespace VCVeterans.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult UploadImage(string email, string image)
+        {
+            return View("Index");
+        }
 
         public IActionResult Privacy()
         {
