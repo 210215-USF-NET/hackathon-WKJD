@@ -13,5 +13,7 @@ namespace VCVModels
         public int UserID { get; set; }
 
         public string Email { get; set; }
+
+        public ICollection<Image> Images { get; set; }
     }
 }
