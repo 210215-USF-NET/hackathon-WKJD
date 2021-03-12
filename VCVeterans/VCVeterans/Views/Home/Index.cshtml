@@ -82,6 +82,7 @@
         </div>
         <img id="canvasimg" style="display:none;">
         <br />
+        <input type="number" id="setSize" value="2" min="2" max="100"/>
         <input type="button" value="Save" id="btn" size="30" onclick="save()">
         <input type="button" value="Clear" id="clr" size="23" onclick="erase()">
         <input type="file" id="bgImg" accept="image/*" />
@@ -113,11 +114,16 @@
         prevY = 0,
         currY = 0,
         dot_flag = false;
-
     var x = "black",
         y = 2;
     document.getElementById('black').style.outline = "2px solid black";
     document.getElementById('black').style.outlineOffset = "2px";
+    
+    var pixelSizeChanger = document.getElementById('setSize');
+
+    pixelSizeChanger.addEventListener('change', function (e) {
+        y = e.target.value;
+    });
 
     function init() {
         canvas = document.getElementById('can');
@@ -187,12 +193,10 @@
             case "white":
                 x = 'rgba(0,0,0,1)';
                 ctx.globalCompositeOperation = 'destination-out';
-                y = 14;
                 break;
             case obj.id:
                 ctx.globalCompositeOperation = "source-over";
                 x = obj.id;
-                y = 2;
                 break;
         }
     }

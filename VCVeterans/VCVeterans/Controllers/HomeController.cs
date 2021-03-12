@@ -21,11 +21,6 @@ namespace VCVeterans.Controllers
             _imageBL = imageBL;
         }
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
             return View();
