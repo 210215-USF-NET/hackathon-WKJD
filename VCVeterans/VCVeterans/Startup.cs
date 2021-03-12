@@ -30,7 +30,7 @@ namespace VCVeterans
             services.AddScoped<IUserRepository, UserRepoDB>();
             services.AddScoped<IUserBL, UserBL>();
             services.AddScoped<IImageRepository, ImageRepoDB>();
-            services.AddScoped<IImageBL, ImageBL >();
+            services.AddScoped<IImageBL, ImageBL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
