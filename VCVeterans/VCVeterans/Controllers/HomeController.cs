@@ -29,11 +29,11 @@ namespace VCVeterans.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult UploadImage(string email, string image)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {
-                    if(_userBL.GetUserByEmail(email) != null)
+                    if (_userBL.GetUserByEmail(email) != null)
                     {
                         Image newImage = new Image();
                         newImage.User = _userBL.GetUserByEmail(email);
