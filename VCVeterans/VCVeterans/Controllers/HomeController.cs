@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using VCVeterans.Models;
 using VCVBL;
+using VCVeterans.Models;
 using VCVModels;
 namespace VCVeterans.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
         private readonly IUserBL _userBL;
         private readonly IImageBL _imageBL;
         public HomeController(IUserBL userBL, IImageBL imageBL)
@@ -21,9 +21,14 @@ namespace VCVeterans.Controllers
             _imageBL = imageBL;
         }
 
+
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult Gal()
+        {
+            return View(_imageBL.GetImages()) ;
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
