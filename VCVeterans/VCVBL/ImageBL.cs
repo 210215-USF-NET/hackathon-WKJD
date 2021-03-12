@@ -10,10 +10,10 @@ namespace VCVBL
 {
     public class ImageBL : IImageBL
     {
-        private IImageRepository _repo;
+        private IImageRepository  _repo;
         public ImageBL(IImageRepository repo)
         {
-            repo = _repo;
+           _repo = repo;
         }
 
         public Image AddImage(Image newImage)

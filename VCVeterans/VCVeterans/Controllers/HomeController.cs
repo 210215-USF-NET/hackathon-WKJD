@@ -7,13 +7,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using VCVBL;
 using VCVeterans.Models;
-using VCVBL;
 using VCVModels;
 namespace VCVeterans.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
         private readonly IUserBL _userBL;
         private readonly IImageBL _imageBL;
         public HomeController(IUserBL userBL, IImageBL imageBL)
@@ -22,10 +21,7 @@ namespace VCVeterans.Controllers
             _imageBL = imageBL;
         }
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+    
 
         public IActionResult Index()
         {
