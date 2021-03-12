@@ -146,13 +146,17 @@
         obj.style.outline = "2px solid black";
         obj.style.outlineOffset = "2px";
         switch (obj.id) {
+            case "white":
+                x = 'rgba(0,0,0,1)';
+                ctx.globalCompositeOperation = 'destination-out';
+                y = 14;
+                break;
             case obj.id:
+                ctx.globalCompositeOperation = "source-over";
                 x = obj.id;
+                y = 2;
                 break;
         }
-        if (x == "white") y = 14;
-        else y = 2;
-
     }
 
     function draw() {
