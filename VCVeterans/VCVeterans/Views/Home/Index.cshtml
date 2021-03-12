@@ -30,7 +30,7 @@
 
     #colorHolder {
         overflow: hidden;
-        width: 300px;
+        width: 500px;
         padding-left: 0;
         padding-right: 0;
         margin-left: auto;
@@ -39,8 +39,6 @@
     }
 
     .Eraser {
-        outline: 2px solid black;
-        outline-offset: 2px;
         text-align: justify;
         padding-left: 0;
         padding-right: 0;
@@ -54,9 +52,10 @@
         display: inline-block;
         width: 100%;
     }
-
     .Eraser:hover {
         background-color: lightgray;
+        outline: 2px solid black;
+        outline-offset: 2px;
     }
 </style>
 
@@ -69,18 +68,21 @@
         <canvas id="can" width="500" height="500"></canvas>
         <div>Choose Color</div>
         <div id="colorHolder" class="text-center">
+            <div id="red" style="background: red;" class="colorBlocks" onclick="color(this)"></div>
+            <div id="orange" style="background: orange;" class="colorBlocks" onclick="color(this)"></div>
+            <div id="yellow" style="background: yellow;" class="colorBlocks" onclick="color(this)"></div>
             <div id="green" style="background: green;" class="colorBlocks" onclick="color(this)"></div>
             <div id="blue" style="background: blue;" class="colorBlocks" onclick="color(this)"></div>
-            <div id="red" style="background: red;" class="colorBlocks" onclick="color(this)"></div>
-            <div id="yellow" style="background: yellow;" class="colorBlocks" onclick="color(this)"></div>
-            <div id="orange" style="background: orange;" class="colorBlocks" onclick="color(this)"></div>
+            <div id="indigo" style="background: indigo;" class="colorBlocks" onclick="color(this)"></div>
+            <div id="violet" style="background: violet;" class="colorBlocks" onclick="color(this)"></div>
+            <div id="pink" style="background: pink;" class="colorBlocks" onclick="color(this)"></div>
             <div id="black" style="background: black;" class="colorBlocks" onclick="color(this)"></div>
             <div id="white" class="Eraser" onclick="color(this)">Eraser</div>
         </div>
-        <p id="canvasimg" style="display:none;"></p>
-        <br />
-        <input type="button" value="save" id="btn" size="30" onclick="save()">
-        <input type="button" value="clear" id="clr" size="23" onclick="erase()">
+        <img id="canvasimg" style="display:none;">
+        <br/>
+        <input type="button" value="Save" id="btn" size="30" onclick="save()">
+        <input type="button" value="Clear" id="clr" size="23" onclick="erase()">
         <hr />
     </div>
     <div class="text-center">
@@ -112,6 +114,8 @@
 
     var x = "black",
         y = 2;
+    document.getElementById('black').style.outline = "2px solid black";
+    document.getElementById('black').style.outlineOffset = "2px";
 
     function init() {
         canvas = document.getElementById('can');
@@ -134,27 +138,16 @@
     }
 
     function color(obj) {
+        var elements = document.querySelectorAll('.colorBlocks');
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.outline = "0px";
+            elements[i].style.outlineOffset = "0px";
+        }
+        obj.style.outline = "2px solid black";
+        obj.style.outlineOffset = "2px";
         switch (obj.id) {
-            case "green":
-                x = "green";
-                break;
-            case "blue":
-                x = "blue";
-                break;
-            case "red":
-                x = "red";
-                break;
-            case "yellow":
-                x = "yellow";
-                break;
-            case "orange":
-                x = "orange";
-                break;
-            case "black":
-                x = "black";
-                break;
-            case "white":
-                x = "white";
+            case obj.id:
+                x = obj.id;
                 break;
         }
         if (x == "white") y = 14;
