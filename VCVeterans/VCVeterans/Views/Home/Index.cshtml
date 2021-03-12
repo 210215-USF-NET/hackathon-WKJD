@@ -128,6 +128,7 @@
     function init() {
         canvas = document.getElementById('can');
         ctx = canvas.getContext("2d");
+        ctx.lineCap = 'round';
         w = canvas.width;
         h = canvas.height;
         canvas.addEventListener("mousemove", function (e) {
