@@ -12,5 +12,6 @@ namespace VCVBL
         User AddNewUser(User newUser);
         User GetUserByID(int userID);
         ICollection<Image> GetUserImages(int userID);
+        User GetUserByEmail(string userEmail);
     }
 }

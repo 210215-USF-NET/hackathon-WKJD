@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\VCVBL\VCVBL.csproj" />
     <ProjectReference Include="..\VCVDL\VCVDL.csproj" />
   </ItemGroup>
 

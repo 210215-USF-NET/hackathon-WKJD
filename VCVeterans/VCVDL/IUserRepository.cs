@@ -11,6 +11,7 @@ namespace VCVDL
     {
         User AddNewUser(User newUser);
         User GetUserByID(int userID);
+        User GetUserByEmail(string userEmail);
         ICollection<Image> GetUserImages(int userID);
     }
 }
