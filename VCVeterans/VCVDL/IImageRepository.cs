@@ -8,11 +8,12 @@ using VCVDL;
 
 namespace VCVDL
 {
-    class IImageRepository
+    public interface IImageRepository
     {
 
         Image AddImage(Image newImage);
 
+        List<Image> GetImages();
 
 
 
