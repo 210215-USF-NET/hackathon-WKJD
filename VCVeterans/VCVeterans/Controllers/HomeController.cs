@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,6 @@ namespace VCVeterans.Controllers
             _userBL = userBL;
             _imageBL = imageBL;
         }
-
 
         public IActionResult Index()
         {
