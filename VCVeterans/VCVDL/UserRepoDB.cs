@@ -22,6 +22,11 @@ namespace VCVDL
             return newUser;
         }
 
+        public User GetUserByEmail(string userEmail)
+        {
+            return _context.Users.AsNoTracking().Select(user => user).FirstOrDefault(user => user.Email == userEmail);
+        }
+
         public User GetUserByID(int userID)
         {
             return _context.Users.AsNoTracking().Select(user => user).FirstOrDefault(user => user.UserID == userID);

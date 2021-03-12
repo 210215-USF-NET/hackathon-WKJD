@@ -8,7 +8,7 @@ using VCVModels;
 
 namespace VCVDL
 {
-    class ImageRepoDB : IImageRepository
+    public class ImageRepoDB : IImageRepository
     {
 
         private readonly VCVDBContext _context;
