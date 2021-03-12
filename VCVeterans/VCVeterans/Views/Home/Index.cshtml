@@ -146,7 +146,13 @@
         obj.style.outline = "2px solid black";
         obj.style.outlineOffset = "2px";
         switch (obj.id) {
+            case "white":
+                x = 'rgba(0,0,0,1)';
+                ctx.globalCompositeOperation = 'destination-out';
+                //ctx.fillStyle = 'rgba(0,0,0,1)';
+                break;
             case obj.id:
+                ctx.globalCompositeOperation = "source-over";
                 x = obj.id;
                 break;
         }
