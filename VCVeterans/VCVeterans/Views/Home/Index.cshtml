@@ -52,6 +52,7 @@
         display: inline-block;
         width: 100%;
     }
+
     .Eraser:hover {
         background-color: lightgray;
         outline: 2px solid black;
@@ -80,9 +81,10 @@
             <div id="white" class="Eraser" onclick="color(this)">Eraser</div>
         </div>
         <img id="canvasimg" style="display:none;">
-        <br/>
+        <br />
         <input type="button" value="Save" id="btn" size="30" onclick="save()">
         <input type="button" value="Clear" id="clr" size="23" onclick="erase()">
+        <input type="file" id="bgImg" accept="image/*" />
         <hr />
     </div>
     <div class="text-center">
@@ -122,7 +124,6 @@
         ctx = canvas.getContext("2d");
         w = canvas.width;
         h = canvas.height;
-
         canvas.addEventListener("mousemove", function (e) {
             findxy('move', e)
         }, false);
@@ -135,7 +136,34 @@
         canvas.addEventListener("mouseout", function (e) {
             findxy('out', e)
         }, false);
+        //adding background image to current canvas
+        var backgroundBG = new Image();
+        backgroundBG.src = "https://i.imgur.com/fSgnUKW.jpg";
+        backgroundBG.onload = function () {
+            ctx.drawImage(backgroundBG, 0, 0, w, h)
+        }
+
+        //loading references to our file input
+
+        var fileInput = document.getElementById('bgImg');
+
+        fileInput.addEventListener('change', function (e) {
+            var ctxBG = document.getElementById('can').getContext('2d');
+            var img = new Image;
+            img.src = URL.createObjectURL(e.target.files[0]);
+
+            img.onload = function () {
+
+                ctxBG.drawImage(img, 0, 0, w, h);
+            }
+            reader.readAsDataURL(file);
+
+        });
     }
+
+
+
+
 
     function color(obj) {
         var elements = document.querySelectorAll('.colorBlocks');
@@ -186,6 +214,7 @@
         document.getElementById("imageToPass").value = dataURL;
     }
 
+
     function findxy(res, e) {
         if (res == 'down') {
             prevX = currX;
@@ -216,4 +245,17 @@
             }
         }
     }
+
+    //stuff for background image canvas
+    //this isn't working with the current styling of other canvas - just gonna use a background
+    /*
+    var canvasBG = document.getElementById("backgroundCanvas"),
+        ctxBG = canvasBG.getContext("2d");
+    var backgroundBG = new Image();
+    backgroundBG.src = "https://i.imgur.com/fSgnUKW.jpg";
+
+    backgroundBG.onload = function () {
+        ctxBG.drawImage(backgroundBG, 0, 0);
+    }
+    */
 </script>
