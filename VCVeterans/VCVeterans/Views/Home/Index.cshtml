@@ -153,8 +153,16 @@
             img.src = URL.createObjectURL(e.target.files[0]);
 
             img.onload = function () {
-
-                ctxBG.drawImage(img, 0, 0, w, h);
+                //Check if the user has the eraser selected, then change the operation
+                if (ctxBG.globalCompositeOperation == "destination-out") {
+                    ctxBG.globalCompositeOperation = "source-over";
+                    ctxBG.drawImage(img, 0, 0, w, h);
+                    ctxBG.globalCompositeOperation = "destination-out";
+                } else {
+                    ctxBG.drawImage(img, 0, 0, w, h);
+                }
+                
+                
             }
             reader.readAsDataURL(file);
 
