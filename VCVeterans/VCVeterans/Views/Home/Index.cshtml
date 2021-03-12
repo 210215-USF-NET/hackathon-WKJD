@@ -18,20 +18,43 @@
         height: 25px;
         padding-left: 0;
         padding-right: 0;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 7px;
         float: left;
         position: relative;
     }
 
+    .colorBlocks:hover{
+        outline: 2px solid black;
+        outline-offset: 2px;
+    }
+
     #colorHolder {
         overflow: hidden;
-        width: 200px;
+        width: 300px;
         padding-left: 0;
         padding-right: 0;
         margin-left: auto;
         margin-right: auto;
         display: block;
+    }
+
+    .Eraser {
+        outline: 2px solid black;
+        outline-offset: 2px;
+        text-align: justify;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 7px;
+        float: left;
+        position: relative;
+    }
+    Eraser:after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+    }
+    .Eraser:hover{
+        background-color:lightgray;
     }
 </style>
 
@@ -50,10 +73,10 @@
             <div id="yellow" style="background: yellow;" class="colorBlocks" onclick="color(this)"></div>
             <div id="orange" style="background: orange;" class="colorBlocks" onclick="color(this)"></div>
             <div id="black" style="background: black;" class="colorBlocks" onclick="color(this)"></div>
-            <div id="white" class="colorBlocks" >Eraser</div>
+            <div id="white" class="Eraser" onclick="color(this)">Eraser</div>
         </div>
         <img id="canvasimg" style="display:none;">
-        <hr/>
+        <br/>
         <input type="button" value="save" id="btn" size="30" onclick="save()">
         <input type="button" value="clear" id="clr" size="23" onclick="erase()">
     </div>
