@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VCVDL
 {
-    class ImageRepoDB
+    class ImageRepoDB : IImageRepository
     {
     }
 }
