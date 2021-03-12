@@ -12,6 +12,27 @@
         width: 500px;
         border: 2px solid black;
     }
+
+    .colorBlocks {
+        width: 25px;
+        height: 25px;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        float: left;
+        position: relative;
+    }
+
+    #colorHolder {
+        overflow: hidden;
+        width: 200px;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
 </style>
 
 <div class="text-center">
@@ -22,14 +43,17 @@
     <div class="text-center">
         <canvas id="can" width="500" height="500"></canvas>
         <div>Choose Color</div>
-        <div id="green" onclick="color(this)"></div>
-        <div id="blue" onclick="color(this)"></div>
-        <div id="red" onclick="color(this)"></div>
-        <div id="yellow" onclick="color(this)"></div>
-        <div id="orange" onclick="color(this)"></div>
-        <div id="black" onclick="color(this)"></div>
-        <div>Eraser</div>
+        <div id="colorHolder" class="text-center">
+            <div id="green" style="background: green;" class="colorBlocks" onclick="color(this)"></div>
+            <div id="blue" style="background: blue;" class="colorBlocks" onclick="color(this)"></div>
+            <div id="red" style="background: red;" class="colorBlocks" onclick="color(this)"></div>
+            <div id="yellow" style="background: yellow;" class="colorBlocks" onclick="color(this)"></div>
+            <div id="orange" style="background: orange;" class="colorBlocks" onclick="color(this)"></div>
+            <div id="black" style="background: black;" class="colorBlocks" onclick="color(this)"></div>
+            <div id="white" class="colorBlocks" >Eraser</div>
+        </div>
         <img id="canvasimg" style="display:none;">
+        <hr/>
         <input type="button" value="save" id="btn" size="30" onclick="save()">
         <input type="button" value="clear" id="clr" size="23" onclick="erase()">
     </div>
@@ -126,8 +150,8 @@
         if (res == 'down') {
             prevX = currX;
             prevY = currY;
-            currX = e.clientX - canvas.offsetLeft;
-            currY = e.clientY - canvas.offsetTop;
+            currX = e.clientX - canvas.getBoundingClientRect().left;
+            currY = e.clientY - canvas.getBoundingClientRect().top;
 
             flag = true;
             dot_flag = true;
@@ -146,8 +170,8 @@
             if (flag) {
                 prevX = currX;
                 prevY = currY;
-                currX = e.clientX - canvas.offsetLeft;
-                currY = e.clientY - canvas.offsetTop;
+                currX = e.clientX - canvas.getBoundingClientRect().left;;
+                currY = e.clientY - canvas.getBoundingClientRect().top;
                 draw();
             }
         }
