@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using VCVBL;
 using VCVeterans.Models;
 using VCVBL;
 using VCVModels;
@@ -29,6 +30,10 @@ namespace VCVeterans.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult Gal()
+        {
+            return View(_imageBL.GetImages()) ;
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

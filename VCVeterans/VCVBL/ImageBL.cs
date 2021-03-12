@@ -21,5 +21,10 @@ namespace VCVBL
             return _repo.AddImage(newImage);
 
         }
+
+        public List<Image> GetImages()
+        {
+            return _repo.GetImages();
+        }
     }
 }
