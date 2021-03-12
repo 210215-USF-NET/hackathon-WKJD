@@ -23,10 +23,10 @@
         position: relative;
     }
 
-    .colorBlocks:hover{
-        outline: 2px solid black;
-        outline-offset: 2px;
-    }
+        .colorBlocks:hover {
+            outline: 2px solid black;
+            outline-offset: 2px;
+        }
 
     #colorHolder {
         overflow: hidden;
@@ -46,6 +46,7 @@
         float: left;
         position: relative;
     }
+
     Eraser:after {
         content: "";
         display: inline-block;
@@ -165,7 +166,7 @@
     }
 
     function erase() {
-        var m = confirm("Want to clear");
+        var m = confirm("Would you like to erase your image and start over?");
         if (m) {
             ctx.clearRect(0, 0, w, h);
             document.getElementById("canvasimg").style.display = "none";
@@ -173,9 +174,9 @@
     }
 
     function save() {
-        document.getElementById("canvasimg").style.border = "2px solid";
+        //document.getElementById("canvasimg").style.border = "2px solid";
         var dataURL = canvas.toDataURL();
-        document.getElementById("canvasimg").src = dataURL;
+        document.getElementById("canvasimg").innerHTML = "Image has been saved! Please enter your email address and press 'upload' to receive a copy of your image";
         document.getElementById("canvasimg").style.display = "inline";
         /*by setting the value of our hidden form field to the data url, we can pass the data to the controller for the image */
         document.getElementById("imageToPass").value = dataURL;
