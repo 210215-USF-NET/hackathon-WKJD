@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +10,25 @@ namespace VCVDL
 {
     class ImageRepoDB : IImageRepository
     {
+
+        private readonly VCVDBContext _context;
+        public ImageRepoDB(VCVDBContext context)
+        {
+            _context = context;
+        }
         public Image AddImage(Image newImage)
         {
-            throw new NotImplementedException();
+            _context.Images.Add(newImage);
+            _context.SaveChanges();
+            return newImage;
         }
 
         public List<Image> GetImages()
         {
-            throw new NotImplementedException();
+            return _context.Images
+                 .AsNoTracking()
+                 .Select(image => image)
+                 .ToList();
         }
     }
 }
