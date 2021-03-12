@@ -20,6 +20,11 @@ namespace VCVBL
             
         }
 
+        public User GetUserByEmail(string userEmail)
+        {
+            return _repo.GetUserByEmail(userEmail);
+        }
+
         public User GetUserByID(int userID)
         {
             return _repo.GetUserByID(userID);

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VCVDL;
-
+using VCVBL;
 namespace VCVeterans
 {
     public class Startup
@@ -26,11 +26,11 @@ namespace VCVeterans
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-
             services.AddDbContext<VCVDBContext>(options => options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
-
-
+            services.AddScoped<IUserRepository, UserRepoDB>();
+            services.AddScoped<IUserBL, UserBL>();
+            services.AddScoped<IImageRepository, ImageRepoDB>();
+            services.AddScoped<IImageBL, ImageBL >();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
